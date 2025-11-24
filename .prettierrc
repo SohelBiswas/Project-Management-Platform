@@ -4,6 +4,6 @@
     "semi" : true,
     "singleQuote" : false,
     "trailingcomma": "all",
-    "brackeSpacing" :true,
-    "arrpowparens" : "always"
+    "bracketSpacing" : true,
+    "arrowParens" : "always"
 }
