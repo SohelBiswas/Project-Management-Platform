@@ -1,5 +1,5 @@
 import mongoose, {Schema} from "mongoose";
-import { forwardRef } from "react";
+import bcrypt from "bcrypt"
 
 const userSchema = new Schema({
     avatar: {
@@ -54,7 +54,17 @@ const userSchema = new Schema({
     emailVerificationExpiry: {
         type: Date
     },
-    
+
 })
+
+userSchema.pre("save", async function (next) {
+    if(!this.isModified("password")) return next
+    this.password = await bcrypt.hash(this.password, 10)
+    next()
+})
+
+userSchema.methods.isPasswordCorrect = async function (password) {
+    return await bcrypt.compare(password, this.password)
+}
 
 export const user = mongoose.model("User", userSchema)
