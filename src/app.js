@@ -5,7 +5,7 @@ import cors from "cors";
 const app = express();
 
 dotenv.config({
-    "path" : "./.env"
+  path: "./.env",
 });
 
 // Basic configuration for express
@@ -20,16 +20,15 @@ app.use(
     origin: process.env.CORS_ORIGIN?.split(",") || "http://localhost:5173",
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders : ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
-
 // Imprt healthcheck route
 
-import healthCheckRouter from "./routes/healthcheck.route.js"
+import healthCheckRouter from "./routes/healthcheck.route.js";
 
-app.use("/api/v1/healthcheck", healthCheckRouter)
+app.use("/api/v1/healthcheck", healthCheckRouter);
 
 app.get("/", (req, res) => {
   res.send("This is my first project!");
