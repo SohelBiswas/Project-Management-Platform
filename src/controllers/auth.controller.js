@@ -33,5 +33,5 @@ const registerUser = asyncHandler(async (req, res) => {
 
   await user.save({ validateBeforeSave: False });
 
-  sendmail;
+  sendMail;
 });
